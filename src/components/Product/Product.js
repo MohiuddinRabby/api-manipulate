@@ -11,7 +11,9 @@ const Product = (props) => {
           className="img-fluid"
           style={{ width: "100px" }}
         />
-        <p>price: ${price}</p>
+        <p>
+          price: ${price} <a href="">Details...</a>
+        </p>
         <p>category: {category}</p>
         <button
           className="btn btn-info"
