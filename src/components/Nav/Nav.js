@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../global/CartContext";
 
 const Nav = () => {
+  const [cart, setCart] = useContext(CartContext);
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav m-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
-              Cart
-            </a>
+            <span className="nav-link">
+              Cart [ items: {cart.length} price: {totalPrice} ]
+            </span>
           </li>
         </ul>
       </div>
