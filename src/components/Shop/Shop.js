@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Product from "../Product/Product";
 import loader from "../../assets/img/loader.gif";
+import { CartContext } from "../../global/CartContext";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  //context
+  const [cart, setCart] = useContext(CartContext);
   useEffect(() => {
     fetch("https://mighty-earth-81475.herokuapp.com/products")
       .then((res) => res.json())
@@ -13,7 +16,9 @@ const Shop = () => {
       });
   }, []);
   const handleCart = (product) => {
-    console.log("cart click",product);
+    const items = { name: product.name, price: product.price };
+    setCart((preveCart) => [...preveCart, items]);
+    // console.log("cart click", items);
   };
   return (
     <div className="container">
