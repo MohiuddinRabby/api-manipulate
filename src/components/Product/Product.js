@@ -1,7 +1,8 @@
 import React from "react";
 import "./Product.css";
+import { Link } from "react-router-dom";
 const Product = (props) => {
-  const { price, img, category } = props.products;
+  const { price, img, category, key } = props.products;
   return (
     <div className="card">
       <div className="card-body text-center" style={{ height: "15rem" }}>
@@ -12,7 +13,7 @@ const Product = (props) => {
           style={{ width: "100px" }}
         />
         <p>
-          price: ${price} <a href="">Details...</a>
+          price: ${price} <Link to={"/details/" + key}>Details...</Link>
         </p>
         <p>category: {category}</p>
         <button
