@@ -4,23 +4,31 @@ import Nav from "./components/Nav/Nav";
 import { CartProvider } from "./global/CartContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import NotFound from "./components/NotFound/NotFound";
+import About from "./components/About/About";
 function App() {
   return (
-    <>
-      <Router>
-        <Switch>
-          <CartProvider>
-            <Nav></Nav>
+    <div>
+      <CartProvider>
+        <Nav></Nav>
+        <Router>
+          <Switch>
             <Route exact path="/">
               <Shop></Shop>
             </Route>
             <Route path="/details/:key">
               <ProductDetails></ProductDetails>
             </Route>
-          </CartProvider>
-        </Switch>
-      </Router>
-    </>
+            <Route path="/about">
+              <About></About>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+        </Router>
+      </CartProvider>
+    </div>
   );
 }
 
