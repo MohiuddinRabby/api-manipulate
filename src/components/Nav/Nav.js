@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../global/CartContext";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [cart, setCart] = useContext(CartContext);
@@ -12,6 +13,9 @@ const Nav = () => {
             <span className="nav-link">
               Cart [ items: {cart.length} price: {totalPrice} ]
             </span>
+          </li>
+          <li>
+            <a href="/about">About</a>
           </li>
         </ul>
       </div>
